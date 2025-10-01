@@ -1,0 +1,21 @@
+---
+// src/components/stm-col.astro
+
+// Define the expected props
+interface Props {
+    path?: string; // The attribute path in the data object (e.g., 'user.name')
+    name: string; // The user-friendly column name
+    sortable?: boolean; // Enable sorting for this column
+    type?: 'string' | 'number' | 'date'; // Data type for sorting
+}
+
+const {
+    name= 'Default',
+    path = name,
+    sortable = true, 
+    type = 'string' 
+} = Astro.props;
+
+const config = JSON.stringify({ path, name, sortable, type }) + ',\n';
+---
+{config}

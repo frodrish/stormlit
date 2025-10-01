@@ -1,0 +1,99 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import '../css/sort.css';
+
+// Define the expected props
+interface Props extends HTMLAttributes<'table'> {
+    id: string; // The required ID for filtering
+    data: Record<string, any>[]; // The JSON array of data
+}
+
+const { id, data, ...rest } = Astro.props;
+
+// Utility to create a user-friendly label from a key (e.g., 'firstName' -> 'First Name')
+const toTitleCase = (str: string): string => {
+    // 1. Split camelCase (e.g., 'firstName' -> ['first', 'Name'])
+    // 2. Insert a space before capital letters (e.g., 'firstName' -> 'first Name')
+    // 3. Capitalize the first letter of the result (e.g., 'first Name' -> 'First Name')
+    const result = str
+        .replace(/([A-Z])/g, ' $1')
+        .trim();
+    return result.charAt(0).toUpperCase() + result.slice(1);
+};
+
+if (!Astro.slots.has('default')) {
+    throw new Error(' StmCol components need to be included')
+}
+
+let columnConfigs = await Astro.slots.render('default')
+
+columnConfigs = '[' + columnConfigs.trim().replaceAll('&quot;','"').slice(0, -1) + ']'
+
+let columns: {
+    path: string;
+    name: string;
+    sortable: boolean;
+    type: 'string' | 'number' | 'date';
+}[] = [];
+
+try {
+    columns = JSON.parse(columnConfigs);
+} catch (e) {
+    console.error('Failed to parse column configuration from StmCol components:', e);
+}
+
+const getAttributeValue = (obj: any, path: string): any => {
+    if (!obj || !path) return undefined;
+    return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+};
+---
+
+{!data || data.length === 0 ? (
+    <div class="stm-table-empty-data">No data available.</div>
+) : (
+<div class="stm-table-container">
+    <input
+            type="text"
+            class="table-filter-input"
+            target-table={id}
+            placeholder="Filter table data..."
+            aria-controls={id}
+    />
+
+    <table id={id} class="sortable-table" {...rest}>
+        <thead>
+        <tr>
+            {columns.map(col => (
+                    <th
+                            class={col.sortable ? "sortable-header" : ""}
+                            data-type={col.type}
+                            data-path={col.path}
+                            scope="col"
+                    >
+                        {toTitleCase(col.name)}
+                    </th>
+            ))}
+        </tr>
+        </thead>
+        <tbody>
+        {data.map(row => (
+                <tr>
+                    {columns.map(col => {
+                        const cellValue = getAttributeValue(row, col.path);
+                        const dataValue = (col.type === 'number' || col.type === 'date')
+                            ? cellValue?.toString() : undefined;
+                        return (
+                            <td data-value={dataValue}>
+                                {cellValue !== undefined && cellValue !== null ? cellValue : ''}
+                            </td>
+                        );
+                    })}
+                </tr>
+        ))}
+        </tbody>
+    </table>
+</div>
+)}
+
+<script src="../js/sort.js" >
+</script>
