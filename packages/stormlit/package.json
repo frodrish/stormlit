@@ -1,7 +1,7 @@
 {
   "name": "stormlit",
   "description": "Component description",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/frodrish/stormlit#readme",
   "type": "module",
   "exports": {
@@ -11,8 +11,11 @@
   },
   "files": [
     "index.js",
-    "stm-col.astro",
-    "stm-col.astro"
+    "astro/stm-col.astro",
+    "astro/stm-table.astro",
+    "css/sort.css",
+    "js/sort.js",
+    "README.md"
   ],
   "keywords": [
     "astro",
