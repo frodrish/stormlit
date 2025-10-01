@@ -1,0 +1,18 @@
+---
+import  { StmCol, StmTable } from 'stormlit';
+import data from '../test.yaml';
+---
+
+<pre>
+    <StmCol path="id" name="Employee ID" />
+    <StmCol path="username" name="Name"  />
+    <StmCol name="email" />
+</pre>
+
+<StmTable id="employee-data" data={data.users}>
+    <StmCol path="id" name="Employee ID" />
+    <StmCol path="username" name="Name"  />
+    <StmCol name="email" />
+</StmTable>
+
+<a href="about">about</a>

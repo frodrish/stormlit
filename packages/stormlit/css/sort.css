@@ -1,0 +1,26 @@
+.sortable-header {
+    /* Default (unsorted) style: dim color */
+    color: #ccc; 
+    transition: color 0.1s;
+}
+
+.sortable-header:hover {
+    /* Hover state */
+    color: #999;
+}
+
+/* Style the whole header when it's actively sorted */
+.sortable-table th.asc,
+.sortable-table th.desc {
+    /* Example: Add a background color to the active column header */
+    background-color: #f3f4f6; /* Tailwind gray-100 equivalent */
+    color: #1f2937; /* Darker text color */
+}
+
+/* Style the active arrow icon */
+.sortable-table th.asc .sort-icon,
+.sortable-table th.desc .sort-icon {
+    /* Make the active icon clearly visible */
+    color: #3b82f6; /* Tailwind blue-500 equivalent */
+    font-weight: bold;
+}
