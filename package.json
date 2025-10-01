@@ -14,5 +14,6 @@
   "bugs": {
     "url": "https://github.com/frodrish/stormlit/issues"
   },
-  "homepage": "https://github.com/frodrish/stormlit#readme"
+  "homepage": "https://github.com/frodrish/stormlit#readme",
+  "workspaces": ["packages/stormlit", "demo" ]
 }

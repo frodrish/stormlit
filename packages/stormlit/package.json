@@ -22,5 +22,8 @@
     "withastro",
     "astro-component",
     "static grid"
-  ]
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified in stormlit\" && exit 1"
+  }
 }

@@ -5,7 +5,9 @@
   "scripts": {
     "astro": "astro",
     "dev": "astro dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "echo \"Error: no test specified in stormlit\" && exit 1"
   },
   "repository": {
     "type": "git",
