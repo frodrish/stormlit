@@ -1,13 +1,16 @@
 {
-  "name": "demo",
-  "version": "0.1.0",
+  "name": "stormlit_docs",
+  "version": "0.1.2",
   "description": "",
   "type": "module",
   "scripts": {
+    "postinstall": "patch-package --patch-dir ../patches",
+    "vite": "vite",
     "astro": "astro",
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
+    "dev": "astro dev --config ../astro.config.mjs",
+    "vdev": "astro dev --verbose --config ../astro.config.mjs",
+    "build": "astro build --config ../astro.config.mjs",
+    "preview": "astro preview --config ../astro.config.mjs",
     "test": "echo \"Error: no test specified in stormlit\""
   },
   "repository": {
@@ -21,10 +24,9 @@
   },
   "homepage": "https://github.com/frodrish/stormlit#readme",
   "devDependencies": {
+    "@astrojs/starlight": "^0.36.0",
     "@rollup/plugin-yaml": "^4.1.2",
-    "astro": "^5.14.1"
-  },
-  "dependencies": {
-    "stormlit": "^0.1.2"
+    "astro": "^5.14.1",
+    "patch-package": "^8.0.1"
   }
 }

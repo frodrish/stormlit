@@ -1,0 +1,94 @@
+---
+import {
+    base,
+    site,
+    srcDir,
+    cacheDir,
+    outDir,
+    publicDir,
+    root,
+} from "astro:config/server";
+import { getCollection } from 'astro:content';
+
+async function getAllCollection (collections){
+
+    //const collectionNames = Object.keys(collections)
+    console.log(collections)
+
+    const allCollectionsData = {};
+
+    for (const name of collections) {
+        const collectionEntries = await getCollection(name);
+        allCollectionsData[name] = collectionEntries.map(entry => ({
+            id: entry.id,
+            slug: entry.slug,
+            data: entry.data,
+            // You can also render the content if needed, e.g., await entry.render()
+        }));
+    }
+    return allCollectionsData;
+}
+
+const configPath = `${srcDir}content.config`
+let allCollectionsData = []
+try {
+    //const collections = await import(configPath);
+    const response = await fetch(Astro.url.origin + "/debug2Col");
+    const collections = await response.json();
+    allCollectionsData = await getAllCollection(collections);
+} catch (e) {
+    console.log(e)
+}
+
+const response = await fetch(Astro.url.origin + "/debug2Route");
+const routes = await response.json();
+
+---
+<div>
+    <h1>Astro Debug Information - All </h1>
+    <a href="debug2Conf">Configuration data</a>
+    <a href="debug2Route">Route data</a>
+    <a href="debug2Col">Collection data</a>
+    <section>
+        <h2>Astro Directory Setup</h2>
+        <ul>
+            <li><strong>site:</strong> {site}</li>
+            <li><strong>base:</strong> {base}</li>
+            <li><strong>root:</strong> {root}</li>
+            <li><strong>srcDir:</strong> {srcDir}</li>
+            <li><strong>pagesDir:</strong> {srcDir + 'pages'}</li>
+            <li><strong>cacheDir:</strong> {cacheDir}</li>
+            <li><strong>outDir:</strong> {outDir}</li>
+            <li><strong>publicDir:</strong> {publicDir}</li>
+
+        </ul>
+    </section>
+
+    <hr/>
+
+    <section>
+        <h2>Discovered Routes</h2>
+        <ul>
+            {routes.map((route) => (
+                    <li><a href={route.pattern}>{route.pattern}</a></li>
+            ))}
+        </ul>
+    </section>
+    <hr/>
+    <h2>Config File: {configPath + '.ts'}</h2>
+    {Object.entries(allCollectionsData).map(([collectionName, entries]) => (
+            <section>
+                <h3>Collection: {collectionName}</h3>
+                <ul>
+                    {entries.map(entry => (
+                            <li>
+                                <h3>{entry.data.title || entry.slug}</h3> {/* Assuming 'title' in frontmatter */}
+                                <p>ID: {entry.id}</p>
+                                <p>Slug: {entry.slug}</p>
+                                {/* Add more data fields as needed */}
+                            </li>
+                    ))}
+                </ul>
+            </section>
+    ))}
+</div>

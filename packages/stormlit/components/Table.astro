@@ -22,7 +22,7 @@ const toTitleCase = (str: string): string => {
 };
 
 if (!Astro.slots.has('default')) {
-    throw new Error(' StmCol components need to be included')
+    throw new Error(' Col components need to be included')
 }
 
 let columnConfigs = await Astro.slots.render('default')

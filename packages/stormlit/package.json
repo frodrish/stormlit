@@ -1,22 +1,25 @@
 {
   "name": "stormlit",
   "description": "Component description",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/frodrish/stormlit#readme",
   "type": "module",
+  "author": "frodrish",
+  "license": "ISC"  ,
   "exports": {
     ".": "./index.js",
-    "./astro": "./stm-table.astro",
-    "./astro": "./stm-col.astro"
+    "./components": "./components.ts",
+    "./components/Table.astro": {
+      "types": "./components/Table.astro.tsx",
+      "import": "./components/Table.astro"
+    },
+    "./components/Col.astro": {
+      "types": "./components/Col.astro.tsx",
+      "import": "./components/Col.astro"
+    },
+    "./plugin/remark": "./remarkLinkExtensions.js",
+    "./plugin/astro": "./astro-debug-plugin.ts"
   },
-  "files": [
-    "index.js",
-    "astro/stm-col.astro",
-    "astro/stm-table.astro",
-    "css/sort.css",
-    "js/sort.js",
-    "README.md"
-  ],
   "keywords": [
     "astro",
     "withastro",

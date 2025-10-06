@@ -3,17 +3,22 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
+    "postinstall": "patch-package",
     "test": "echo \"Error: no test specified\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/frodrish/stormlit.git"
   },
-  "author": "",
+  "author": "frodrish",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/frodrish/stormlit/issues"
   },
   "homepage": "https://github.com/frodrish/stormlit#readme",
-  "workspaces": ["packages/stormlit", "demo" ]
+  "workspaces": [
+    "packages/stormlit",
+    "demo",
+    "docs"
+  ]
 }

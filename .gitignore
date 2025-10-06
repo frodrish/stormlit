@@ -1,3 +1,7 @@
 node_modules
 .idea
-demo/.astro
+**/*/.astro
+.astro
+**/*/.vite
+**/*/dist
+proto/
