@@ -1,11 +1,10 @@
-import type { Plugin, ResolvedConfig } from 'vite';
+import type { AstroIntegration } from 'astro';
+import type {Plugin} from 'vite';
 
 import path from 'path';
-import type { AstroIntegration, IntegrationResolvedRoute } from 'astro';
+
 import {fileURLToPath,pathToFileURL} from "url";
-import {remarkLinkExtensions} from  '../remark/remarkLinkExtensions.js';
-
-
+import remarkLinkExtensions from  '../remark/remarkLinkExtensions.js';
 
 
 let resolvedRoutes: string = '[]';
@@ -22,9 +21,8 @@ export default function astroDebug(collections : string[] =[]): AstroIntegration
                 resolvedRoutes = JSON.stringify(routes, null, 2); routes;
             },
 
-            // Inject the Vite plugin and pass the route data
             'astro:config:setup': ({ updateConfig, command,injectRoute }) => {
-                if (command === 'dev' || command === 'build') {
+                if (command === 'dev') {
                     const __dirname = path.dirname(fileURLToPath(import.meta.url));
                     const  entrypoint =  new URL(pathToFileURL(path.resolve(__dirname, './debug.astro')))
                      injectRoute({
@@ -32,9 +30,9 @@ export default function astroDebug(collections : string[] =[]): AstroIntegration
                         entrypoint: entrypoint,
                     });
                     updateConfig({
-                      /*  markdown: {
+                        markdown: {
                             remarkPlugins: [remarkLinkExtensions],
-                        },*/
+                        },
                         vite: {
                             plugins: [
                                  AstroDebugPlugin(),
@@ -81,4 +79,5 @@ function AstroDebugPlugin(): Plugin {
         }
     };
 }
+
 

@@ -1,9 +1,12 @@
 import { defineConfig } from 'astro/config';
 import yaml from "@rollup/plugin-yaml";
-import {astroDebug} from 'stormlit';
+import {astroDebug,remarkLinkExtensions,generateSidebar} from 'stormlit';
 import starlight from '@astrojs/starlight';
-import remarkLinkExtensions from "./packages/stormlit/plugin/remark/remarkLinkExtensions.js";
 
+const srcDir = '.';
+const customSidebar = generateSidebar(srcDir + '/sidebar.md');
+
+console.log("Sidebar:", JSON.stringify(customSidebar));
 
 export default defineConfig({
     root: '../',
@@ -15,7 +18,7 @@ export default defineConfig({
         astroDebug(['docs']),
         starlight({
             title: 'Stormlit',
-            sidebar: [],
+            sidebar: customSidebar,
         })
     ],
     vite: {

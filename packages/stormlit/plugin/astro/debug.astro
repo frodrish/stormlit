@@ -18,13 +18,7 @@ async function getAllCollection (collections){
     const allCollectionsData = {};
 
     for (const name of collections) {
-        const collectionEntries = await getCollection(name);
-        allCollectionsData[name] = collectionEntries.map(entry => ({
-            id: entry.id,
-            slug: entry.slug,
-            data: entry.data,
-            // You can also render the content if needed, e.g., await entry.render()
-        }));
+        allCollectionsData[name] = await getCollection(name);
     }
     return allCollectionsData;
 }
@@ -48,7 +42,7 @@ const routes = await response.json();
     <h1>Astro Debug Information - All </h1>
     <a href="debug2Conf">Configuration data</a>
     <a href="debug2Route">Route data</a>
-    <a href="debug2Col">Collection data</a>
+    <a href="debug2Col">Collectioncd  data</a>
     <section>
         <h2>Astro Directory Setup</h2>
         <ul>
@@ -83,8 +77,8 @@ const routes = await response.json();
                     {entries.map(entry => (
                             <li>
                                 <h3>{entry.data.title || entry.slug}</h3> {/* Assuming 'title' in frontmatter */}
-                                <p>ID: {entry.id}</p>
-                                <p>Slug: {entry.slug}</p>
+                                <p>id: {entry.id}</p>
+                                <p>filePath: {entry.filePath}</p>
                                 {/* Add more data fields as needed */}
                             </li>
                     ))}

@@ -17,6 +17,11 @@
       "types": "./components/Col.astro.tsx",
       "import": "./components/Col.astro"
     },
+    "./components/AstroCol.astro": {
+      "types": "./components/AstroCol.astro.tsx",
+      "import": "./components/AstroCol.astro"
+    },
+    "./plugin/remark": "./generateSidebar.js",
     "./plugin/remark": "./remarkLinkExtensions.js",
     "./plugin/astro": "./astro-debug-plugin.ts"
   },

@@ -7,9 +7,11 @@
     "postinstall": "patch-package --patch-dir ../patches",
     "vite": "vite",
     "astro": "astro",
+    "check": "astro check --config ../astro.config.mjs",
     "dev": "astro dev --config ../astro.config.mjs",
     "vdev": "astro dev --verbose --config ../astro.config.mjs",
     "build": "astro build --config ../astro.config.mjs",
+    "vbuild": "astro build --config ../astro.config.mjs --verbose",
     "preview": "astro preview --config ../astro.config.mjs",
     "test": "echo \"Error: no test specified in stormlit\""
   },
@@ -27,6 +29,8 @@
     "@astrojs/starlight": "^0.36.0",
     "@rollup/plugin-yaml": "^4.1.2",
     "astro": "^5.14.1",
-    "patch-package": "^8.0.1"
+    "patch-package": "^8.0.1",
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.9.3"
   }
 }
