@@ -1,0 +1,30 @@
+---
+import AgGridWrapper from './AgGridWrapper.jsx';
+import { db, Queries } from '@astrojs/db';
+
+const slotContent = Astro.slots.default ?? '';
+console.log(slotContent);
+
+// Only use rowData from props
+let { rowData } = Astro.props;
+if (!Array.isArray(rowData)) {
+  rowData = [];
+}
+
+const columnDefs = rowData.length > 0
+  ? Object.keys(rowData[0]).map(key => ({
+      headerName: key.charAt(0).toUpperCase() + key.slice(1),
+      field: key,
+      sortable: true,
+      filter: true,
+    }))
+  : [];
+
+const id = slotContent;
+
+await db.insert(Queries).values({ id, slotContent });
+
+
+---
+
+<AgGridWrapper client:only="react" rowData={rowData} columnDefs={columnDefs}/>

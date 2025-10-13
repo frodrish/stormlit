@@ -1,11 +1,11 @@
 {
   "name": "stormlit",
   "description": "Component description",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/frodrish/stormlit#readme",
   "type": "module",
   "author": "frodrish",
-  "license": "ISC"  ,
+  "license": "ISC",
   "exports": {
     ".": "./index.js",
     "./components": "./components.ts",
@@ -21,7 +21,6 @@
       "types": "./components/AstroCol.astro.tsx",
       "import": "./components/AstroCol.astro"
     },
-    "./plugin/remark": "./generateSidebar.js",
     "./plugin/remark": "./remarkLinkExtensions.js",
     "./plugin/astro": "./astro-debug-plugin.ts"
   },
@@ -33,5 +32,10 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified in stormlit\""
+  },
+  "dependencies": {
+    "@astrojs/db": "^0.18.0",
+    "ag-grid-community": "^34.2.0",
+    "ag-grid-react": "^34.2.0"
   }
 }
