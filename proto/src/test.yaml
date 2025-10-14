@@ -1,0 +1,39 @@
+users:
+  - id: 101
+    username: john.doe
+    email: john.doe@example.com
+    roles:
+      - admin
+      - editor
+    active: true
+  - id: 102
+    username: jane.smith
+    email: jane.smith@example.com
+    roles:
+      - viewer
+    active: false
+  - id: 103
+    username: peter.jones
+    email: peter.jones@example.com
+    roles:
+      - editor
+    active: true
+  - id: 1011
+    username: john.doe
+    email: john.doe@example.com
+    roles:
+      - admin
+      - editor
+    active: true
+  - id: 1021
+    username: jane.smith
+    email: jane.smith@example.com
+    roles:
+      - viewer
+    active: false
+  - id: 1031
+    username: peter.jones
+    email: peter.jones@example.com
+    roles:
+      - editor
+    active: true
