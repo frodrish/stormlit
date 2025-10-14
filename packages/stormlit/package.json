@@ -17,11 +17,14 @@
       "types": "./components/Col.astro.tsx",
       "import": "./components/Col.astro"
     },
-    "./components/AstroCol.astro": {
-      "types": "./components/AstroCol.astro.tsx",
-      "import": "./components/AstroCol.astro"
+    "./components/Grid.astro": {
+      "types": "./components/Grid.astro.tsx",
+      "import": "./components/Grid.astro"
     },
-    "./plugin/remark": "./generateSidebar.js",
+    "./components/Show.astro": {
+      "types": "./components/Show.astro.tsx",
+      "import": "./components/Show.astro"
+    },
     "./plugin/remark": "./remarkLinkExtensions.js",
     "./plugin/astro": "./astro-debug-plugin.ts"
   },
@@ -37,6 +40,7 @@
   "dependencies": {
     "@astrojs/db": "^0.18.0",
     "ag-grid-community": "^34.2.0",
-    "ag-grid-react": "^34.2.0"
+    "ag-grid-react": "^34.2.0",
+    "better-sqlite3": "^12.4.1"
   }
 }

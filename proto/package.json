@@ -6,7 +6,7 @@
   "scripts": {
     "astro": "astro",
     "dev": "astro dev",
-    "vdev": "astro dev --verbose",
+    "devv": "astro dev --verbose",
     "build": "astro build",
     "preview": "astro preview",
     "test": "echo \"Error: no test specified in stormlit\""
@@ -28,10 +28,10 @@
     "react-dom": "^19.2.0"
   },
   "dependencies": {
-    "@astrojs/db": "^0.18.0",
     "@astrojs/react": "^4.4.0",
     "ag-grid-community": "^34.2.0",
     "ag-grid-react": "^34.2.0",
-    "crypto": "^1.0.1"
+    "better-sqlite3": "^12.4.1",
+    "stormlit": "^0.1.4"
   }
 }

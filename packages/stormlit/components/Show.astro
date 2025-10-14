@@ -1,0 +1,11 @@
+---
+import Table from './Table.astro';
+import Col from './Col.astro';
+import {getQueries} from './db.ts'
+
+const data = getQueries('my.db');
+---
+<Table id="queries-data" data={data}>
+    <Col path="id" name="ID"/>
+    <Col path="sql" name="Query"/>
+</Table>

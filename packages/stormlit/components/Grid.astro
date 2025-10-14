@@ -1,8 +1,15 @@
 ---
 import AgGridWrapper from './AgGridWrapper.jsx';
-import { db, Queries } from '@astrojs/db';
+import {insertQuery} from './db.js';
+import crypto from 'crypto';
 
-const slotContent = Astro.slots.default ?? '';
+import {cacheDir, outDir} from "astro:config/server";
+
+let slotContent = '';
+if (Astro.slots.has('default')) {
+    slotContent = await Astro.slots.render('default');
+}
+
 console.log(slotContent);
 
 // Only use rowData from props
@@ -20,11 +27,15 @@ const columnDefs = rowData.length > 0
     }))
   : [];
 
-const id = slotContent;
 
-await db.insert(Queries).values({ id, slotContent });
+const sql = slotContent.toString();
+const id = crypto.createHash('md5').update(sql).digest('hex');
 
 
+const data = insertQuery('my.db',id, sql)
+console.error("data:",data);
+
+const url = `/data?id=${id}`;
 ---
 
-<AgGridWrapper client:only="react" rowData={rowData} columnDefs={columnDefs}/>
+<AgGridWrapper client:only="react" url={url} columnDefs={columnDefs}/>
