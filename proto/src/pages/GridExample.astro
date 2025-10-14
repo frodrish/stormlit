@@ -1,6 +1,8 @@
 ---
 import Grid from '../../../packages/stormlit/components/Grid.astro';
 import yaml from '../test.yaml'
+import Show from '../../../packages/stormlit/components/Show.astro';
+
 ---
 
 <Grid rowData={yaml.users}>
@@ -10,3 +12,5 @@ SELECT *  FROM users
 <p>
     {JSON.stringify(yaml)}
 </p>
+
+<Show/>
