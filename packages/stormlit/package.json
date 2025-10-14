@@ -38,7 +38,8 @@
     "test": "echo \"Error: no test specified in stormlit\""
   },
   "dependencies": {
-    "@astrojs/db": "^0.18.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "ag-grid-community": "^34.2.0",
     "ag-grid-react": "^34.2.0",
     "better-sqlite3": "^12.4.1"

@@ -1,0 +1,11 @@
+---
+import {Grid,Show} from 'stormlit/components';
+import yaml from '../test.yaml'
+---
+
+<Grid rowData={yaml.users}>
+SELECT *  FROM users
+</Grid>
+
+
+<Show/>
