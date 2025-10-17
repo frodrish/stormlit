@@ -1,6 +1,3 @@
----
-title: Stormlit
----
 # Stormlit
 
 - [Goals](goals.md)

@@ -1,6 +1,3 @@
----
-title: Stormlit
----
 # Plugins
 
 ## Installation

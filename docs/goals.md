@@ -1,6 +1,3 @@
----
-title: Stormlit
----
 # Goals
 
 - Documentation should work in github and with documentation tool for static content

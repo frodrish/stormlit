@@ -25,6 +25,12 @@
     "astro": "^5.14.1"
   },
   "dependencies": {
-    "stormlit": "^0.1.2"
+    "@astrojs/mdx": "^4.3.7",
+    "@astrojs/react": "^4.4.0",
+    "ag-grid-community": "^34.2.0",
+    "ag-grid-react": "^34.2.0",
+    "better-sqlite3": "^12.4.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   }
 }
